@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Bienvenido</title>
+    </head>
+    <body>
+        <h1>Esto viene desde el backend: {{data}}</h1>
+
+        <h2>Agregar info</h2>
+        <form method="POST"></form>
+            {% csrf_token %}
+            <input placeholder="Mensaje" id="text" name="msg" type="text">
+            <input type="submit">
+            <br>
+            <textarea style="width: 500px; height: 500;">{{result}}</textarea>
+    </body>
+</html>

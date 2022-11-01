@@ -4,14 +4,14 @@ from .services import Services
 # Create your views here.
 
 #Pruebas
-def Data(request):
+def Data(requests):
     Data = Services.getData()
     
     result = ""
-    if request.method == "POST":
-        text = request.POST.get("text")
-        result = Services.addData({'msg': text})
+    if requests.method == "POST":
+        text = requests.POST.get("text")
+        result = Services.addData({'text': text})
     
-    return render(request, 'info.html', {'data': Data, 'result': result})
+    return render(requests, 'info.html', {'data': Data, 'result': result})
 
     

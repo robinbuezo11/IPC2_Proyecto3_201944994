@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .services import Services
 
 # Create your views here.
 
-#Pruebas
 def welcome(request):
-    return HttpResponse("Bienvenido a Proyecto 3")
+    return render(request, 'welcome.html')
 
-def welcomeTemplate(request):
-    return render(request, 'welcome.html', {'name': 'Robin Buezo'})
+def uploadFile(requests):
+    if requests.method == 'POST' and requests.FILES['myfile']:
+        myfile = requests.FILES['myfile']
+        result = Services.uploadXml(myfile)
+        return render(requests, 'uploadfile.html', {'result': result})
+    return render(requests, 'uploadfile.html')

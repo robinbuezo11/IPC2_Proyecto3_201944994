@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Cargar XML</title>
+    </head>
+    <body>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+            <label for="myfile">Cargue un archivo</label>
+            <input type="file" id="myfile" name="myfile" accept=".xml">
+            <button type="submit">Cargar</button>
+            </div>
+          </form>
+        <h2>{{result.msg}}</h2>
+    </body>
+</html>

@@ -5,22 +5,25 @@ app = Flask(__name__)
 CORS(app)
 
 #Pruebas
-msg = 'Esta es una prueba'
+data = ['Esta es una prueba']
 
 @app.route('/', methods=["GET"])
 def getData():
-    return jsonify(msg)
+    return jsonify(data)
 
 @app.route('/add', methods=["POST"])
 def addData():
     body = request.get_json()
 
-    msg += body['msg']
+    data.append(body['text'])
 
     return jsonify({'msg':'Se agregó la info'})
 
-
 #Proyecto
-@app.route("/fileupload", methods=["GET"])
-def getFile():
-    return jsonify()
+@app.route("/uploadXml", methods=["POST"])
+def uploadXml():
+    file = request.get_data().decode()
+    file = file[file.find('<'):file.rfind('>')+1]
+    print(file)
+
+    return jsonify({'msg': 'Archivo xml cargado exitosamente'})

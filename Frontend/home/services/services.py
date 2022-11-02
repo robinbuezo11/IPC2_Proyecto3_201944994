@@ -3,7 +3,12 @@ import requests
 
 class Services:
 
-    def uploadXml(xml):
+    def uploadConfigXml(xml):
         xml_dict = {'xml': xml}
-        response = requests.post('http://127.0.0.1:5000/uploadXml', files=xml_dict)
+        response = requests.post('http://127.0.0.1:5000/uploadConfigXml', files=xml_dict)
+        return json.loads(response.text)
+
+    def uploadConsumedXml(xml):
+        xml_dict = {'xml': xml}
+        response = requests.post('http://127.0.0.1:5000/uploadConsumedXml', files=xml_dict)
         return json.loads(response.text)

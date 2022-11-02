@@ -5,3 +5,15 @@ class Config:
         self.__name = name
         self.__description = description
         self.__resources = resources
+
+    def getId(self):
+        return self.__id
+
+    def getName(self):
+        return self.__name
+
+    def getDesc(self):
+        return self.__description
+    
+    def getResources(self):
+        return self.__resources

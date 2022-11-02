@@ -1,12 +1,12 @@
 <html>
     <head>
-        <title>Cargar XML</title>
+        <title>Cargar XML de Consumos</title>
     </head>
     <body>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
-            <label for="myfile">Cargue un archivo</label>
+            <label for="myfile"><h3>Cargue un archivo de consumos</h3></label>
             <input type="file" id="myfile" name="myfile" accept=".xml">
             <button type="submit">Cargar</button>
             </div>

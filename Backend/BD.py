@@ -64,3 +64,12 @@ class BD:
         except Exception as e:
             print(Fore.RED + f'{e}')
             return [False, e]
+
+    def getResources(self):
+        return self.__resources
+
+    def getCategories(self):
+        return self.__categories
+
+    def getClients(self):
+        return self.__clients

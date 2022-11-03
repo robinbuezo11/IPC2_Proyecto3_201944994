@@ -1,3 +1,5 @@
+import json
+import xmltodict
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from ManagerXml import ManagerXml
@@ -41,3 +43,12 @@ def uploadConsumedXml():
     result = bd.addConsumeds(data)
 
     return jsonify({'msg': result[1]})
+
+@app.route("/consultData", methods=["GET"])
+def consultData():
+    with open('Backend\BD\BD.xml','r') as database:
+        database = database.read()
+        data = xmltodict.parse(database)
+        jsondata = json.dumps(data)
+        res = json.loads(jsondata)
+    return jsonify(res)

@@ -20,3 +20,11 @@ def uploadConsumedXml(requests):
         result = Services.uploadConsumedXml(myfile)
         return render(requests, 'uploadConsumedXml.html', {'result': result})
     return render(requests, 'uploadConsumedXml.html')
+
+def consultData(requests):
+    result = Services.consultData()
+    resources = result['data']['listaRecursos']['recurso']
+    categories = result['data']['listaCategorias']['categoria']
+    clients = result['data']['listaClientes']['cliente']
+
+    return render(requests, 'consultData.html', {'resources': resources, 'categories': categories, 'clients': clients})

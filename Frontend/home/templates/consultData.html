@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Información</title>
+    </head>
+    <body>
+        <h1>Recursos</h1>
+        <ul>
+            {% for resource in resources %}
+            <li>
+              <h2>{{resource.abreviatura}}     {{resource.metrica}}   {{resource.nombre}}    {{resource.tipo}}    {{resource.valorXhora}}</h2>
+            </li>
+            {% endfor %}
+        </ul>
+        <br>
+        <br>
+        <h1>Categorias</h1>
+        <ul>
+            {% for category in categories %}
+            <li>
+                <h2>{{category.cargaTrabajo}}     {{category.descripcion}}</h2>
+                <h2>Lista Configuraciones</h2>
+                <ul>
+                    {% for configuration in category.listaConfiguraciones.configuracion %}
+                    <li>
+                        <h3>{{configuration.descripcion}}     {{configuration.nombre}}</h3>
+                    </li>
+                    {%endfor%}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+        <br>
+        <br>
+        <h1>Clientes</h1>
+        <ul>
+            {% for client in clients %}
+            <li>
+                <h2>{{client.nombre}}     {{client.correoElectronico}}     {{client.direccion}}</h2>
+                <h2>Lista Instancias</h2>
+                <ul>
+                    {% for instance in client.listaInstancias.instancia %}
+                    <li>
+                        <h3>{{instance.estado}}     {{instance.fechaInicio}}       {{instance.nombre}}     {{instance.fechaFinal}}      Config: {{instance.idConfiguracion}}</h3>
+                    </li>
+                    {%endfor%}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

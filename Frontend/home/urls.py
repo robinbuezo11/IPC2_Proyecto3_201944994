@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.welcome),
     path('uploadConfigXml', views.uploadConfigXml),
-    path('uploadConsumedXml', views.uploadConsumedXml)
+    path('uploadConsumedXml', views.uploadConsumedXml),
+    path('consultData', views.consultData)
 ]

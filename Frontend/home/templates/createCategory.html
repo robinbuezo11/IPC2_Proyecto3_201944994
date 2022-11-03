@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Crear Categoría</title>
+    </head>
+    <body>
+        <h1>Crear Categoría</h1>
+        <br>
+        <form method="post">
+            {%csrf_token%}
+            <input placeholder="Id" id="id" name="id" type="text">
+            <input placeholder="Nombre" id="name" name="name" type="text">
+            <input placeholder="Descripción" id="desc" name="desc" type="text">
+            <input placeholder="Carga de Trabajo" id="workload" name="workload" type="text">
+            <input type="submit">
+            <br>
+            <br>
+            <textarea style="width: 1000px; height: 100px;">{{result.msg}}</textarea>
+        </form>
+    </body>
+</html>

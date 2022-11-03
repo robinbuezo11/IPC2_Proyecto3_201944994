@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Crear Cliente</title>
+    </head>
+    <body>
+        <h1>Crear Cliente</h1>
+        <br>
+        <form method="post">
+            {%csrf_token%}
+            <input placeholder="Nit" id="nit" name="nit" type="text">
+            <input placeholder="Nombre" id="name" name="name" type="text">
+            <input placeholder="Usuario" id="user" name="user" type="text">
+            <input placeholder="Clave" id="passw" name="passw" type="password">
+            <input placeholder="Direccion" id="address" name="address" type="text">
+            <input placeholder="Correo" id="email" name="email" type="email">
+            <input type="submit">
+            <br>
+            <br>
+            <textarea style="width: 1000px; height: 100px;">{{result.msg}}</textarea>
+        </form>
+    </body>
+</html>

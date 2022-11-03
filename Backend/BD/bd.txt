@@ -1,0 +1,11 @@
+<data>
+	<listaRecursos>
+    	</listaRecursos>
+	<listaCategorias>
+    	</listaCategorias>
+    	<listaClientes>
+    	</listaClientes>
+    	</archivoConfiguraciones>
+    	<listadoConsumos>
+    	</listadoConsumos>
+</data>

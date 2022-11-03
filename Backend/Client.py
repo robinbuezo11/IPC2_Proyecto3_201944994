@@ -1,6 +1,6 @@
 
 class Client:
-    def __init__(self, nit, name, user, passw, address, email, instances):
+    def __init__(self, nit, name, user, passw, address, email, instances=[]):
         self.__nit = nit
         self.__name = name
         self.__user = user
@@ -29,3 +29,6 @@ class Client:
 
     def getInstances(self):
         return self.__instances
+
+    def setInstances(self, instances):
+        self.__instances = instances

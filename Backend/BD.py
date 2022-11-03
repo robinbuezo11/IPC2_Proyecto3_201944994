@@ -24,7 +24,7 @@ class BD:
             xml = self.mngxml.createXML(self.__resources, self.__categories, self.__clients, self.__consumeds)
             
             if xml is not None:
-                file = open('Backend\BD\BD.xml', 'wb')
+                file = open('BD\BD.xml', 'wb')
                 file.write(xml)
                 file.close()
         except Exception as e:
@@ -73,3 +73,38 @@ class BD:
 
     def getClients(self):
         return self.__clients
+
+    def addResource(self, resource):
+        self.__resources.append(resource)
+        self.__updateBD()
+        return 'Recuso creado exitosamente'
+
+    def addCategory(self, category):
+        self.__categories.append(category)
+        self.__updateBD()
+        return 'Categoria creada exitosamente'
+
+    def addConfig(self, idcat, config):
+        for cat in self.__categories:
+            if cat.getId() == idcat:
+                configs = cat.getConfigs()
+                configs.append(config)
+                cat.setConfigs(configs)
+                self.__updateBD()
+                return f'Configuración agregada a la categoría {cat.getName()}'
+        return 'No se encontró la categoría especificada'
+                
+    def addClient(self, client):
+        self.__clients.append(client)
+        self.__updateBD()
+        return 'Cliente creado exitosamente'
+
+    def addInstance(self, nitclient, instance):
+        for client in self.__clients:
+            if client.getNit() == nitclient:
+                instances = client.getInstances()
+                instances.append(instance)
+                client.setInstances(instances)
+                self.__updateBD()
+                return f'Instancia agregada al cliente {client.getName()}'
+        return 'No se encontró al cliente especificado'

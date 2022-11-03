@@ -1,6 +1,6 @@
 
 class Category:
-    def __init__(self, id, name, description, workloaddef, configs):
+    def __init__(self, id, name, description, workloaddef, configs=[]):
         self.__id = id
         self.__name = name
         self.__description = description
@@ -21,3 +21,6 @@ class Category:
 
     def getConfigs(self):
         return self.__configs
+
+    def setConfigs(self, configs):
+        self.__configs = configs

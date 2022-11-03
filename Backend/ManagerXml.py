@@ -1,3 +1,4 @@
+import datetime
 from colorama import Fore
 import xml.etree.ElementTree as et
 from Category import Category
@@ -5,6 +6,7 @@ from Client import Client
 from Config import Config
 from Instance import Instance
 from Resource import Resource
+import re
 
 class ManagerXml():
     def __init__(self):
@@ -90,11 +92,22 @@ class ManagerXml():
                                         elif iinstance.tag == 'nombre':
                                             nameinstance = iinstance.text
                                         elif iinstance.tag == 'fechaInicio':
-                                            startdate = iinstance.text
+                                            date = re.findall('[0-3][0-9]/[0-3][0-9]/[0-9][0-9][0-9][0-9]', iinstance.text)
+                                            if len(date)>0:
+                                                startdate = date[0]
+                                            else:
+                                                return [],[],[],[False,'Existe un campo de fecha en donde no se encontró ninguna fecha válida']
                                         elif iinstance.tag == 'estado':
                                             status = iinstance.text
                                         elif iinstance.tag == 'fechaFinal':
-                                            enddate = iinstance.text
+                                            if iinstance.text is not None:
+                                                date = re.findall('[0-3][0-9]/[0-3][0-9]/[0-9][0-9][0-9][0-9]', iinstance.text)
+                                                if len(date)>0:
+                                                    enddate = date[0]
+                                                else:
+                                                    return [],[],[],[False,'Existe un campo de fecha en donde no se encontró ninguna fecha válida']
+                                            else:
+                                                enddate = None
                                     newinstance = Instance(idinstance, idconfiginst, nameinstance, startdate, status, enddate)
                                     instances.append(newinstance)
                         newclient = Client(nitclient, nameclient, userclient, passwclient, addressclient, emailclient, instances)
@@ -102,7 +115,7 @@ class ManagerXml():
             return resources, categories, clients, [True,'Información procesada exitosamente']
         except Exception as e:
             print(Fore.RED + f'{e}')
-            return [],[],[],[False, e]
+            return [],[],[],[False, f'{e}']
 
     def readConsumedsXML(self, data, path=True):
         try:
@@ -119,7 +132,11 @@ class ManagerXml():
                         if iconsumed.tag == 'tiempo':
                             time = iconsumed.text
                         elif iconsumed.tag == 'fechaHora':
-                            datetime = iconsumed.text
+                            date = re.findall('[0-3][0-9]/[0-3][0-9]/[0-9][0-9][0-9][0-9] [0-2][0-9]:[0-6][0-9]', iconsumed.text)
+                            if len(date)>0:
+                                datetime = date[0]
+                            else:
+                                return [],[False,'Existe un campo de fechahora en donde no se encontró ninguna fecha válida']
                     newconsumed = [nitclient, idinstance, time, datetime]
                     consumeds.append(newconsumed)
             return consumeds, [True,'Información procesada exitosamente']

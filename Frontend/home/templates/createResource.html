@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Crear Recurso</title>
+    </head>
+    <body>
+        <h1>Crear Recurso</h1>
+        <br>
+        <form method="post">
+            {%csrf_token%}
+            <input placeholder="Id" id="id" name="id" type="text">
+            <input placeholder="Nombre" id="name" name="name" type="text">
+            <input placeholder="Abreviatura" id="abbrev" name="abbrev" type="text">
+            <input placeholder="Metrica" id="metrics" name="metrics" type="text">
+            <input placeholder="Tipo" id="type" name="type" type="text">
+            <input placeholder="valorXhora" id="cost" name="cost" type="number" step="0.01">
+            <input type="submit">
+            <br>
+            <br>
+            <textarea style="width: 1000px; height: 100px;">{{result.msg}}</textarea>
+        </form>
+    </body>
+</html>

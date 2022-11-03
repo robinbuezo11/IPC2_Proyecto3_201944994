@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Crear Instancia</title>
+    </head>
+    <body>
+        <h1>Crear Instancia</h1>
+        <br>
+        <form method="post">
+            {%csrf_token%}
+            <input placeholder="Nit Cliente" id="nitclient" name="nitclient" type="text">
+            <input placeholder="Id" id="idinstance" name="idinstance" type="text">
+            <input placeholder="Id Configuracion" id="idconfig" name="idconfig" type="text">
+            <input placeholder="Nombre" id="name" name="name" type="text">
+            <input placeholder="Fecha Inicio" id="startdate" name="startdate" type="date">
+            <input placeholder="Estado" id="status" name="status" type="text">
+            <input placeholder="Fecha Final" id="enddate" name="enddate" type="date">
+            <input type="submit">
+            <br>
+            <br>
+            <textarea style="width: 1000px; height: 100px;">{{result.msg}}</textarea>
+        </form>
+    </body>
+</html>
